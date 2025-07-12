@@ -1,0 +1,249 @@
+body {
+    background: linear-gradient(135deg, #1e0a2b 0%, #5a1839 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: 'Poppins', 'Segoe UI', sans-serif;
+    overflow: hidden; /* Evita barras de scroll por la animación */
+    position: relative;
+}
+
+.logo {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 50px;
+    height: 50px;
+    opacity: 0.8;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.1);
+    opacity: 1;
+}
+
+.container {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 2.5rem 3.5rem;
+    border-radius: 28px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    color: #e62760;
+    margin-bottom: 1.5rem;
+    font-family: 'Satisfy', cursive;
+    font-size: 3rem;
+    font-weight: 400;
+    letter-spacing: 1px;
+    text-shadow: 0 4px 15px rgba(230, 39, 96, 0.3);
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+button {
+    background: #e75480;
+    color: #fff;
+    border: none;
+    padding: 0.8rem 2rem;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+button:hover {
+    background: #c13b65;
+}
+
+#respuesta {
+    font-size: 1.3rem;
+    color: #f5f5f5;
+    min-height: 2rem;
+}
+
+/* Animación para el emoji del beso */
+@keyframes beso {
+    0% {
+        transform: scale(1) rotateY(0deg) translateZ(0) rotateX(0deg);
+        filter: drop-shadow(0 0 0 rgba(231, 84, 128, 0)) brightness(1);
+        opacity: 1;
+    }
+    20% {
+        transform: scale(1.1) rotateY(-8deg) translateZ(3px) rotateX(2deg);
+        filter: drop-shadow(0 2px 6px rgba(231, 84, 128, 0.2)) brightness(1.05);
+        opacity: 0.95;
+    }
+    40% {
+        transform: scale(1.2) rotateY(-4deg) translateZ(6px) rotateX(4deg);
+        filter: drop-shadow(0 4px 10px rgba(231, 84, 128, 0.4)) brightness(1.1);
+        opacity: 0.9;
+    }
+    60% {
+        transform: scale(1.2) rotateY(4deg) translateZ(6px) rotateX(-4deg);
+        filter: drop-shadow(0 4px 10px rgba(231, 84, 128, 0.4)) brightness(1.1);
+        opacity: 0.9;
+    }
+    80% {
+        transform: scale(1.1) rotateY(8deg) translateZ(3px) rotateX(-2deg);
+        filter: drop-shadow(0 2px 6px rgba(231, 84, 128, 0.2)) brightness(1.05);
+        opacity: 0.95;
+    }
+    100% {
+        transform: scale(1) rotateY(0deg) translateZ(0) rotateX(0deg);
+        filter: drop-shadow(0 0 0 rgba(231, 84, 128, 0)) brightness(1);
+        opacity: 1;
+    }
+}
+
+/* Animación para la palabra "besos" */
+@keyframes aparecer-besos {
+    0%, 70% {
+        opacity: 0;
+        transform: scale(0.8) translateY(10px);
+    }
+    75%, 85% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+    90%, 100% {
+        opacity: 0;
+        transform: scale(0.8) translateY(-10px);
+    }
+}
+
+.beso-animado {
+    display: inline-block;
+    animation: beso 3s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
+    font-size: 1.4em;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    will-change: transform, filter, opacity;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.palabra-besos {
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.8em;
+    color: #e75480;
+    font-weight: 600;
+    animation: aparecer-besos 3s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
+    white-space: nowrap;
+    pointer-events: none;
+}
+
+.confesion {
+    margin-bottom: 2.2rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    color: #e0d4ff;
+    max-width: 380px;
+    line-height: 1.7;
+    background: rgba(224,195,252,0.10);
+    border-radius: 12px;
+    padding: 1rem 1.2rem;
+    box-shadow: 0 2px 8px rgba(231,84,128,0.04);
+    font-weight: 500;
+    transition: background 0.3s;
+    position: relative;
+}
+
+.confesion::after {
+    content: '|';
+    position: absolute;
+    right: 0;
+    color: #e62760;
+    animation: blink-caret .75s step-end infinite;
+}
+
+.confesion:hover {
+    background: rgba(231,84,128,0.08);
+}
+
+/* Animación de escritura */
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+/* Animación del cursor */
+@keyframes blink-caret {
+    from, to { opacity: 0 }
+    50% { opacity: 1; }
+}
+
+/* Media queries para móviles */
+@media (max-width: 768px) {
+    .container {
+        padding: 2rem 1.5rem;
+        margin: 1rem;
+        border-radius: 20px;
+    }
+    
+    h1 {
+        font-size: 1.8rem;
+        margin-bottom: 1.2rem;
+    }
+    
+    .confesion {
+        font-size: 1rem;
+        max-width: 280px;
+        padding: 0.8rem 1rem;
+        margin-bottom: 1.8rem;
+    }
+    
+    .buttons {
+        gap: 1.5rem;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    button {
+        padding: 1rem 2.5rem;
+        font-size: 1.1rem;
+        min-width: 120px;
+    }
+    
+    #respuesta {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 1.5rem 1rem;
+    }
+    
+    h1 {
+        font-size: 1.5rem;
+    }
+    
+    .confesion {
+        font-size: 0.9rem;
+        max-width: 250px;
+    }
+    
+    button {
+        padding: 0.9rem 2rem;
+        font-size: 1rem;
+    }
+} 
